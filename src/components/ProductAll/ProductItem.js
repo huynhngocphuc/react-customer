@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Link,Redirect } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { actGetProductRequest } from '../../redux/actions/products';
+import {actAddWishListRequest} from '../../redux/actions/wishlist'
 import { actAddCartRequest } from "../../redux/actions/cart";
 import { startLoading, doneLoading } from '../../utils/loading'
 import { connect } from 'react-redux'
@@ -11,6 +12,7 @@ import BeautyStars from 'beauty-stars';
 import './style.css'
 toast.configure()
 let token, id;
+id = parseInt(localStorage.getItem("_id"));
 class ProductItem extends Component {
 
   constructor(props) {
@@ -36,7 +38,6 @@ class ProductItem extends Component {
     const { quantity } = this.state;
 
     token = localStorage.getItem("_auth");
-    id = parseInt(localStorage.getItem("_id"));
     if (!token) {
       this.setState({
         redirectYourLogin: true
@@ -50,6 +51,14 @@ class ProductItem extends Component {
     }
 
   };
+  addItemToFavorite = (productId) => {
+    startLoading()
+    if (!id) {
+      return toast.error('vui lòng đăng nhập !')
+    }
+    this.props.addWishList(id,productId);
+    doneLoading();
+  }
 
   render() {
     const { product } = this.props;
@@ -90,8 +99,8 @@ class ProductItem extends Component {
             <div className="add-actions">
               <ul className="add-actions-link">
                 <li className="add-cart active"><Link to="#" onClick={() => this.addItemToCart(product)} >Thêm vào giỏ</Link></li>
-                <li><Link onClick={(id) => this.getInfoProduct(product.productId)} to={`/products/${product.productId}`} title="quick view" className="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i className="fa fa-eye" /></Link></li>
-                {/* <li><Link onClick={(id) => this.addItemToFavorite(product.productId)} className="links-details" to="#" title="favorite" ><i className="fa fa-heart-o" /></Link></li> */}
+                <li><Link  to={`/products/${product.productId}`} title="chi tiểt" className="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i className="fa fa-eye" /></Link></li>
+                <li><Link  onClick={() => this.addItemToFavorite(product.productId)}className="links-details" to="#" title="yêu thích" ><i className="fa fa-heart-o" /></Link></li>
               </ul>
             </div>
           </div>
@@ -118,6 +127,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     addCart: (idCustomer, product, quantity) => {
       dispatch(actAddCartRequest(idCustomer, product, quantity));
+    },
+    addWishList: (id,idProduct) =>{
+      dispatch(actAddWishListRequest(id, idProduct));
     }
   }
 }

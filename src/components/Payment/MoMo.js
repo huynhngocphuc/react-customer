@@ -35,7 +35,7 @@ export default class MoMoPage extends Component {
         }else{
             Swal.fire({
                 position: 'center',
-                icon: 'console.error();',
+                icon: 'error',
                 title: 'Thanh toán thất chuyển sang thanh khi nhận hàng',
                 showConfirmButton: false,
                 timer: 1500
@@ -52,7 +52,7 @@ export default class MoMoPage extends Component {
         }
         return (
             <div>
-                <h1>Thanh toán thất bại chuyển sang trang thái thanh toán khi nhận hàng</h1>
+                <h1>Đang thanh toán ...</h1>
             </div>
         )
     }

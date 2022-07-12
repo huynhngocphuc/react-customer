@@ -19,10 +19,12 @@ import VnPayPage from './pages/VnPayPage';
 import Order1Page from './pages/OrderStatus1Page';
 import Order2Page from './pages/OrderStatus2Page';
 import Order3Page from './pages/OrderStatus3Page';
+import Order4Page from './pages/OrderStatus4Page';
 import ProductPage from './pages/ProductPage';
 import AfterCheckoutPage from './pages/AfterCheckoutPage';
 import LoginGooglePage from './pages/LoginGooglePage';
-import ProfilePage from './pages/ProfilePage'
+import ProfilePage from './pages/ProfilePage';
+import ProductWishListPage from './pages/ProductWishListPage'
 const routes = [
   {
     path: '/',
@@ -32,7 +34,7 @@ const routes = [
   {
     path: '/products',
     exact: true,
-    main: (match) => < ProductPage match={match}/>
+    main: (match) => < ProductPage match={match} />
   },
   {
     path: '/products/:id',
@@ -42,22 +44,22 @@ const routes = [
   {
     path: '/payment/paypal/success/:orderid',
     exact: false,
-    main: (match) => < PaypalPage  match={match} />
+    main: (match) => < PaypalPage match={match} />
   },
   {
     path: '/oauth2/redirect',
     exact: false,
-    main: (match) => < LoginGooglePage  match={match} />
+    main: (match) => < LoginGooglePage match={match} />
   },
   {
     path: '/payment/momo/:orderid',
     exact: false,
-    main: (match) => < MoMoPage  match={match} />
+    main: (match) => < MoMoPage match={match} />
   },
   {
     path: '/payment/vnpay/:orderid',
     exact: false,
-    main: (match) => < VnPayPage  match={match} />
+    main: (match) => < VnPayPage match={match} />
   },
   {
     path: '/login',
@@ -72,12 +74,12 @@ const routes = [
   {
     path: '/forgot-password',
     exact: false,
-    main: (match) => < ForgotPasswordPage  match={match}/>
+    main: (match) => < ForgotPasswordPage match={match} />
   },
   {
     path: '/reset/:code',
     exact: true,
-    main: (match) => < ResetPasswordPage  match={match}/>
+    main: (match) => < ResetPasswordPage match={match} />
   },
   {
     path: '/activate/:code',
@@ -121,29 +123,40 @@ const routes = [
     main: (match) => < Order3Page match={match} />
   },
   {
+    path: '/order/status4',
+    exact: false,
+    main: (match) => < Order4Page match={match} />
+  },
+  {
     path: '/checkout',
     exact: false,
-    main: (match) => < CheckOutPage match={match}/>
+    main: (match) => < CheckOutPage match={match} />
   },
   {
     path: '/after-checkout',
     exact: false,
-    main: (match) => < AfterCheckoutPage match={match}/>
+    main: (match) => < AfterCheckoutPage match={match} />
   },
   {
     path: '/about',
     exact: false,
-    main: (match) => < AboutPage match={match}/>
+    main: (match) => < AboutPage match={match} />
   },
   {
     path: '/contact',
     exact: false,
-    main: (match) => < ContactPage match={match}/>
+    main: (match) => < ContactPage match={match} />
+  },
+  ,
+  {
+    path: '/wishlist',
+    exact: false,
+    main: (match) => < ProductWishListPage match={match} />
   },
   {
     path: '',
     exact: true,
-    main: (match) => < NotFoundPage match={match}/>
+    main: (match) => < NotFoundPage match={match} />
   }
 
 ]

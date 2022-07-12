@@ -43,7 +43,7 @@ export default class VnPayPage extends Component {
         }
         return (
             <div>
-                <h1>Thanh toán thất bại chuyển sang trang thái thanh toán khi nhận hàng</h1>
+                <h1>Đang thanh toán .... </h1>
             </div>
         )
     }
