@@ -23,7 +23,7 @@ ReactDOM.render(
      <MessengerCustomerChat
       pageId="104269089019086"
       appId="403072068520652"
-    />,
+    />, 
     <ToastContainer
       position="top-right"
       autoClose={1700}

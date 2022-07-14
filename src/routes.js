@@ -16,10 +16,7 @@ import CheckOutPage from './pages/CheckOutPage';
 import PaypalPage from './pages/PaypalPage';
 import MoMoPage from './pages/MoMoPage ';
 import VnPayPage from './pages/VnPayPage';
-import Order1Page from './pages/OrderStatus1Page';
-import Order2Page from './pages/OrderStatus2Page';
-import Order3Page from './pages/OrderStatus3Page';
-import Order4Page from './pages/OrderStatus4Page';
+import OrderPage from './pages/OrderStatusPage';
 import ProductPage from './pages/ProductPage';
 import AfterCheckoutPage from './pages/AfterCheckoutPage';
 import LoginGooglePage from './pages/LoginGooglePage';
@@ -108,24 +105,9 @@ const routes = [
   },
 
   {
-    path: '/order/status1',
+    path: '/order/:status',
     exact: false,
-    main: (match) => < Order1Page match={match} />
-  },
-  {
-    path: '/order/status2',
-    exact: false,
-    main: (match) => < Order2Page match={match} />
-  },
-  {
-    path: '/order/status3',
-    exact: false,
-    main: (match) => < Order3Page match={match} />
-  },
-  {
-    path: '/order/status4',
-    exact: false,
-    main: (match) => < Order4Page match={match} />
+    main: (match) => < OrderPage match={match} />
   },
   {
     path: '/checkout',

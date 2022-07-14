@@ -36,7 +36,7 @@ class ProductItem extends Component {
   }
   addItemToCart = product => {
     const { quantity } = this.state;
-
+    id = parseInt(localStorage.getItem("_id"));
     token = localStorage.getItem("_auth");
     if (!token) {
       this.setState({
