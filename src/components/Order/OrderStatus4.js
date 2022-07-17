@@ -67,17 +67,26 @@ class OrderStatus4 extends Component {
                                                                                         item.listProduct.map((product, index) => {
                                                                                             return (
                                                                                                 <>
-                                                                                                    <li>{product.productName}
-                                                                                                        <strong
-                                                                                                            className="product-quantity"
-                                                                                                            style={{
-                                                                                                                paddingLeft: 10,
-                                                                                                                color: "coral",
-                                                                                                                fontStyle: "italic",
-                                                                                                            }}
-                                                                                                        >
-                                                                                                            x{product.quantity}
-                                                                                                        </strong>
+                                                                                                    <li className='d-flex' key={index}>
+                                                                                                        <div className="fix-order">
+                                                                                                            <img src={product.productImage} className="fix-img-order" alt="not found" />
+                                                                                                        </div>
+                                                                                                        <div>
+                                                                                                            <h6 className='pl-3 pt-10'>{product.productName}</h6>
+
+                                                                                                            <strong
+                                                                                                                className="pl-3 product-quantity"
+                                                                                                                style={{
+                                                                                                                    paddingLeft: 10,
+                                                                                                                    color: "coral",
+                                                                                                                    fontStyle: "italic",
+                                                                                                                }}
+                                                                                                            >
+                                                                                                                x{product.quantity}
+                                                                                                            </strong>
+                                                                                                        </div>
+
+
                                                                                                     </li>
                                                                                                 </>
 

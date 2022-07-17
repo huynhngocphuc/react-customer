@@ -23,7 +23,7 @@ ReactDOM.render(
      <MessengerCustomerChat
       pageId="104269089019086"
       appId="403072068520652"
-language= 'en_US'
+      language= 'en_US'
     />, 
     <ToastContainer
       position="top-right"

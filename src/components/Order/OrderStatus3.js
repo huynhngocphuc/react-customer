@@ -126,6 +126,7 @@ class OrderStatus3 extends Component {
     render() {
         const { orders } = this.props
         const { idOrderReview, idProductReview, ratingPoint, textRating } = this.state
+
         console.log(orders)
         return (
             <div className="content-inner">
@@ -227,23 +228,30 @@ class OrderStatus3 extends Component {
                                                                         <tr key={index}>
 
                                                                             <th scope="row">{item.orderId}</th>
-                                                                            <td>
-                                                                                {item.productName}
-                                                                                <strong
-                                                                                    className="product-quantity"
-                                                                                    style={{
-                                                                                        paddingLeft: 10,
-                                                                                        color: "coral",
-                                                                                        fontStyle: "italic",
-                                                                                    }}
-                                                                                >
-                                                                                    x{item.quantity}
-                                                                                </strong>
+                                                                            <td className='d-flex'>
+                                                                                <div className="fix-order">
+                                                                                    <img src={item.productImage} className="fix-img-order" alt="not found" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h6 className='pl-3 pt-10'>{item.productName}</h6>
+                                                                                    <strong
+                                                                                        className="product-quantity"
+                                                                                        style={{
+                                                                                            paddingLeft: 10,
+                                                                                            color: "coral",
+                                                                                            fontStyle: "italic",
+                                                                                        }}
+                                                                                    >
+                                                                                        x{item.quantity}
+                                                                                    </strong>
+                                                                                </div>
+
+
 
                                                                             </td>
                                                                             {/* <td>{formatNumber.format(item.amount)}</td> */}
                                                                             <td>
-                                                                                <Moment format="YYYY/MM/DD">
+                                                                                <Moment format="DD/MM/YYYY">
                                                                                     {item.createDate}
                                                                                 </Moment>
                                                                             </td>

@@ -4,7 +4,7 @@ import { formatNumber } from '../../config/TYPE'
 import Moment from 'react-moment';
 import './style.css'
 import { connect } from 'react-redux'
-import { actFetchOrdersRequest,actDeleteOrderRequest } from '../../redux/actions/order'
+import { actFetchOrdersRequest, actDeleteOrderRequest } from '../../redux/actions/order'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
@@ -41,7 +41,7 @@ class OrderStatus1 extends Component {
         }).then(async (result) => {
             if (result.value) {
                 await this.props.delete_order(id);
-               await Swal.fire(
+                await Swal.fire(
                     'Xóa!',
                     'Đơn hàng của bạn đã được xóa.!',
                     'success'
@@ -66,71 +66,81 @@ class OrderStatus1 extends Component {
                                         <div className="table-responsive">
                                             {
                                                 orders.length > 0 ?
-                                                (
-                                                    <table className="table table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>id đơn hàng</th>
-                                                            <th>sản phẩm</th>
-                                                            <th>Tổng tiền</th>
-                                                            <th>Ngày tạo</th>
-                                                            <th>Hủy đơn</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {orders && orders.length ? orders.map((item, index) => {
-                                                            return (
-                                                                <tr key={index}>
-                                                                    <th scope="row">{item.orderId}</th>
-                                                                    <td>
-                                                                        {
-                                                                            item.listProduct && item.listProduct.length ?
-                                                                                item.listProduct.map((product, index) => {
-                                                                                    return (
-                                                                                        <>
-                                                                                            <li key={index}>{product.productName}
-                                                                                                <strong
-                                                                                                    className="product-quantity"
-                                                                                                    style={{
-                                                                                                        paddingLeft: 10,
-                                                                                                        color: "coral",
-                                                                                                        fontStyle: "italic",
-                                                                                                    }}
-                                                                                                >
-                                                                                                    x{product.quantity}
-                                                                                                </strong>
-                                                                                                 </li>
-                                                                                        </>
-    
-                                                                                    )
-                                                                                }) : null
-                                                                        }
-                                                                    </td>
-                                                                    <td>{formatNumber(item.amount)}</td>
-                                                                    <td>
-                                                                        <Moment format="YYYY/MM/DD">
-                                                                            {item.createDate}
-                                                                        </Moment>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span className="badge badge-pill badge-warning mb-10">chưa duyệt</span>
-                                                                        <br />
-                                                                        <button className="btn btn-outline-danger"
-                                                                            value={item.orderId}
-                                                                            onClick={() => this.handleRemove(item.orderId)} > Hủy đơn</button>
-                                                                    </td>
+                                                    (
+                                                        <table className="table table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>id đơn hàng</th>
+                                                                    <th>sản phẩm</th>
+                                                                    <th>Tổng tiền</th>
+                                                                    <th>Ngày tạo</th>
+                                                                    <th>Hủy đơn</th>
                                                                 </tr>
-                                                            )
-                                                        }) : <tr>Chưa có Đơn </tr>}
-                                                    </tbody>
-                                                </table>
-                                                )
-                                                :
-                                                (                        
-                                                <img src='https://brabantia.com.vn/images/cart-empty.png' className="rounded mx-auto d-block"></img>
-                                                )
+                                                            </thead>
+                                                            <tbody>
+                                                                {orders && orders.length ? orders.map((item, index) => {
+                                                                    return (
+                                                                        <tr key={index}>
+                                                                            <th scope="row">{item.orderId}</th>
+                                                                            <td>
+                                                                                {
+                                                                                    item.listProduct && item.listProduct.length ?
+                                                                                        item.listProduct.map((product, index) => {
+                                                                                            return (
+                                                                                                <>
+                                                                                                    <li className = 'd-flex' key={index}>
+                                                                                                        <div className="fix-order">
+                                                                                                            <img src={product.productImage} className="fix-img-order" alt="not found" />
+                                                                                                        </div>
+                                                                                                        <div>
+                                                                                                            <h6 className='pl-3 pt-10'>{product.productName}</h6>
+                                                                                                            
+
+                                                                                                            <strong
+                                                                                                                className="pl-3 product-quantity"
+                                                                                                                style={{
+                                                                                                                    paddingLeft: 10,
+                                                                                                                    color: "coral",
+                                                                                                                    fontStyle: "italic",
+                                                                                                                }}
+                                                                                                            >
+                                                                                                                x{product.quantity}
+                                                                                                            </strong>
+                                                                                                        </div>
+
+
+                                                                                                    </li>
+                                                                                                </>
+
+                                                                                            )
+                                                                                        }) : null
+                                                                                }
+                                                                            </td>
+                                                                            <td>{formatNumber(item.amount)}</td>
+                                                                            <td>
+                                                                                <Moment format="DD/MM/YYYY">
+                                                                                    {item.createDate}
+                                                                                </Moment>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span className="badge badge-pill badge-warning mb-10">chưa duyệt</span>
+                                                                                <br />
+                                                                                <button className="btn btn-outline-danger"
+                                                                                    value={item.orderId}
+                                                                                    onClick={() => this.handleRemove(item.orderId)} > Hủy đơn</button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    )
+                                                                }) : <tr>Chưa có Đơn </tr>}
+                                                            </tbody>
+                                                        </table>
+                                                    )
+                                                    :
+                                                    (
+                                                        <img src='https://brabantia.com.vn/images/cart-empty.png' className="rounded mx-auto d-block"></img>
+                                                    )
                                             }
-                                           
+
                                         </div>
                                     </div>
 
@@ -156,7 +166,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         delete_order: (id) => {
             dispatch(actDeleteOrderRequest(id))
-          }
+        }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(OrderStatus1)
